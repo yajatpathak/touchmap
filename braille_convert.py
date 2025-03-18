@@ -122,12 +122,12 @@ def word_braille(item):
     convert = ''
 
     if item.isupper():
-        convert += '000001' 
+        convert += '000001'  
     
     item = item.lower()
 
     if item in word_dict:
-        convert += word_dict[item]
+        convert += word_dict[item] 
         return convert
 
     if item in prefix_word_dict1:
@@ -139,10 +139,13 @@ def word_braille(item):
     elif item in prefix_word_dict3:
         convert += '000100'
         convert += prefix_word_dict3[item]
+
+    if item in word_abbr_dict:
+        item = word_abbr_dict[item]
     
-    for char in item.lower():
+    for char in item:
         if char in letter_dict:
-            convert += word_dict[char]
+            convert += letter_dict[char] 
     
     return convert
 
